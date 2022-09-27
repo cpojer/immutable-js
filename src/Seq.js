@@ -1,9 +1,9 @@
 import { wrapIndex } from './TrieUtils';
-import { Collection } from './Collection';
 import { IS_SEQ_SYMBOL, isSeq } from './predicates/isSeq';
 import { isImmutable } from './predicates/isImmutable';
 import { isCollection } from './predicates/isCollection';
 import { isKeyed } from './predicates/isKeyed';
+import { isIndexed } from './predicates/isIndexed';
 import { isAssociative } from './predicates/isAssociative';
 import { isRecord } from './predicates/isRecord';
 import { IS_ORDERED_SYMBOL } from './predicates/isOrdered';
@@ -20,6 +20,34 @@ import {
 
 import hasOwnProperty from './utils/hasOwnProperty';
 import isArrayLike from './utils/isArrayLike';
+
+export class Collection {
+  constructor(value) {
+    return isCollection(value) ? value : Seq(value);
+  }
+}
+
+export class KeyedCollection extends Collection {
+  constructor(value) {
+    return isKeyed(value) ? value : KeyedSeq(value);
+  }
+}
+
+export class IndexedCollection extends Collection {
+  constructor(value) {
+    return isIndexed(value) ? value : IndexedSeq(value);
+  }
+}
+
+export class SetCollection extends Collection {
+  constructor(value) {
+    return isCollection(value) && !isAssociative(value) ? value : SetSeq(value);
+  }
+}
+
+Collection.Keyed = KeyedCollection;
+Collection.Indexed = IndexedCollection;
+Collection.Set = SetCollection;
 
 export class Seq extends Collection {
   constructor(value) {

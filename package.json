@@ -1,29 +1,16 @@
 {
-  "name": "immutable",
-  "version": "4.3.0",
-  "description": "Immutable Data Collections",
+  "name": "@cnakazawa/immutable-map",
+  "version": "0.0.2",
+  "description": "Immutable Map",
   "license": "MIT",
   "homepage": "https://immutable-js.com",
-  "author": {
-    "name": "Lee Byron",
-    "url": "https://github.com/leebyron"
-  },
   "repository": {
     "type": "git",
-    "url": "git://github.com/immutable-js/immutable-js.git"
+    "url": "git://github.com/cpojer/immutable-js.git"
   },
-  "bugs": {
-    "url": "https://github.com/immutable-js/immutable-js/issues"
-  },
-  "main": "dist/immutable.js",
-  "module": "dist/immutable.es.js",
+  "module": "./ImmutableMap.js",
   "sideEffects": false,
-  "types": "dist/immutable.d.ts",
-  "files": [
-    "dist",
-    "README.md",
-    "LICENSE"
-  ],
+  "types": "./ImmutableMap.d.ts",
   "keywords": [
     "immutable",
     "persistent",
@@ -36,6 +23,9 @@
     "sequence",
     "iteration"
   ],
+  "publishConfig": {
+    "directory": "publish"
+  },
   "publishKeys": [
     "name",
     "version",
@@ -66,6 +56,7 @@
     "type-check:ts": "tsc --project type-definitions/tsconfig.json && tsc --project __tests__/tsconfig.json && dtslint type-definitions/ts-tests",
     "type-check:flow": "flow check type-definitions/flow-tests --include-warnings",
     "build": "run-s build:*",
+    "build-just-map": "npm run build && rm -rf ./publish && mkdir -p ./publish && cp dist/immutable.es.js publish/ImmutableMap.js && cp dist/immutable.d.ts publish/ImmutableMap.d.ts && cp package-publish.json publish/package.json && cp README.md publish/",
     "build:clean": "rimraf dist",
     "build:dist": "rollup -c ./resources/rollup-config.js",
     "build:esm": "rollup -c ./resources/rollup-config-es.js",
@@ -76,8 +67,7 @@
     "website:build": "cd website && next build && next-sitemap && next export",
     "website:dev": "cd website && next dev",
     "check-git-clean": "./resources/check-git-clean.sh",
-    "benchmark": "node ./resources/benchmark.js",
-    "publish": "echo 'ONLY PUBLISH VIA CI'; exit 1;"
+    "benchmark": "node ./resources/benchmark.js"
   },
   "prettier": {
     "singleQuote": true,

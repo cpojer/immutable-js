@@ -1,7 +1,6 @@
 import { is } from './is';
-import { Collection, KeyedCollection } from './Collection';
+import { Collection, KeyedCollection } from './Seq';
 import { IS_MAP_SYMBOL, isMap } from './predicates/isMap';
-import { isOrdered } from './predicates/isOrdered';
 import {
   DELETE,
   SHIFT,
@@ -14,7 +13,6 @@ import {
 } from './TrieUtils';
 import { hash } from './Hash';
 import { Iterator, iteratorValue, iteratorDone } from './Iterator';
-import { sortFactory } from './Operations';
 import arrCopy from './utils/arrCopy';
 import assertNotInfinite from './utils/assertNotInfinite';
 import { setIn } from './methods/setIn';
@@ -30,15 +28,13 @@ import { asMutable } from './methods/asMutable';
 import { asImmutable } from './methods/asImmutable';
 import { wasAltered } from './methods/wasAltered';
 
-import { OrderedMap } from './OrderedMap';
-
 export class Map extends KeyedCollection {
   // @pragma Construction
 
   constructor(value) {
     return value === undefined || value === null
       ? emptyMap()
-      : isMap(value) && !isOrdered(value)
+      : isMap(value)
       ? value
       : emptyMap().withMutations(map => {
           const iter = KeyedCollection(value);
@@ -107,16 +103,6 @@ export class Map extends KeyedCollection {
   }
 
   // @pragma Composition
-
-  sort(comparator) {
-    // Late binding
-    return OrderedMap(sortFactory(this, comparator));
-  }
-
-  sortBy(mapper, comparator) {
-    // Late binding
-    return OrderedMap(sortFactory(this, comparator, mapper));
-  }
 
   map(mapper, context) {
     return this.withMutations(map => {

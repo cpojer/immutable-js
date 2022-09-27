@@ -1,8 +1,7 @@
 import { isImmutable } from '../predicates/isImmutable';
 import { isIndexed } from '../predicates/isIndexed';
 import { isKeyed } from '../predicates/isKeyed';
-import { IndexedCollection, KeyedCollection } from '../Collection';
-import { Seq } from '../Seq';
+import { IndexedCollection, KeyedCollection, Seq } from '../Seq';
 import hasOwnProperty from '../utils/hasOwnProperty';
 import isDataStructure from '../utils/isDataStructure';
 import shallowCopy from '../utils/shallowCopy';

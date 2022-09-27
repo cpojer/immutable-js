@@ -1,4 +1,4 @@
-import { KeyedCollection } from '../Collection';
+import { KeyedCollection } from '../Seq';
 import { NOT_SET } from '../TrieUtils';
 import { update } from '../functional/update';
 

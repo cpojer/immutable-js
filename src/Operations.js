@@ -6,16 +6,9 @@ import {
   resolveBegin,
   resolveEnd,
 } from './TrieUtils';
-import {
-  Collection,
-  KeyedCollection,
-  SetCollection,
-  IndexedCollection,
-} from './Collection';
 import { isCollection } from './predicates/isCollection';
 import { isKeyed } from './predicates/isKeyed';
 import { isIndexed } from './predicates/isIndexed';
-import { isOrdered, IS_ORDERED_SYMBOL } from './predicates/isOrdered';
 import { isSeq } from './predicates/isSeq';
 import {
   getIterator,
@@ -27,17 +20,20 @@ import {
   ITERATE_ENTRIES,
 } from './Iterator';
 import {
-  Seq,
-  KeyedSeq,
-  SetSeq,
-  IndexedSeq,
-  keyedSeqFromValue,
-  indexedSeqFromValue,
   ArraySeq,
+  Collection,
+  IndexedCollection,
+  IndexedSeq,
+  indexedSeqFromValue,
+  KeyedCollection,
+  KeyedSeq,
+  keyedSeqFromValue,
+  Seq,
+  SetCollection,
+  SetSeq,
 } from './Seq';
 
 import { Map } from './Map';
-import { OrderedMap } from './OrderedMap';
 
 export class ToKeyedSequence extends KeyedSeq {
   constructor(indexed, useKeys) {
@@ -82,7 +78,6 @@ export class ToKeyedSequence extends KeyedSeq {
     return this._iter.__iterator(type, reverse);
   }
 }
-ToKeyedSequence.prototype[IS_ORDERED_SYMBOL] = true;
 
 export class ToIndexedSequence extends IndexedSeq {
   constructor(iter) {
@@ -378,7 +373,7 @@ export function countByFactory(collection, grouper, context) {
 
 export function groupByFactory(collection, grouper, context) {
   const isKeyedIter = isKeyed(collection);
-  const groups = (isOrdered(collection) ? OrderedMap() : Map()).asMutable();
+  const groups = Map().asMutable();
   collection.__iterate((v, k) => {
     groups.update(
       grouper.call(context, v, k, collection),

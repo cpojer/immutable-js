@@ -1,9 +1,13 @@
 import {
+  ArraySeq,
   Collection,
-  KeyedCollection,
   IndexedCollection,
+  IndexedSeq,
+  KeyedCollection,
+  KeyedSeq,
   SetCollection,
-} from './Collection';
+  SetSeq,
+} from './Seq';
 import { isCollection, IS_COLLECTION_SYMBOL } from './predicates/isCollection';
 import { isAssociative } from './predicates/isAssociative';
 import { isKeyed, IS_KEYED_SYMBOL } from './predicates/isKeyed';
@@ -35,13 +39,6 @@ import quoteString from './utils/quoteString';
 
 import { toJS } from './toJS';
 import { Map } from './Map';
-import { OrderedMap } from './OrderedMap';
-import { List } from './List';
-import { Set } from './Set';
-import { OrderedSet } from './OrderedSet';
-import { Stack } from './Stack';
-import { Range } from './Range';
-import { KeyedSeq, IndexedSeq, SetSeq, ArraySeq } from './Seq';
 import {
   reify,
   ToKeyedSequence,
@@ -122,21 +119,6 @@ mixin(Collection, {
 
   toObject: toObject,
 
-  toOrderedMap() {
-    // Use Late Binding here to solve the circular dependency.
-    return OrderedMap(this.toKeyedSeq());
-  },
-
-  toOrderedSet() {
-    // Use Late Binding here to solve the circular dependency.
-    return OrderedSet(isKeyed(this) ? this.valueSeq() : this);
-  },
-
-  toSet() {
-    // Use Late Binding here to solve the circular dependency.
-    return Set(isKeyed(this) ? this.valueSeq() : this);
-  },
-
   toSetSeq() {
     return new ToSetSequence(this);
   },
@@ -147,16 +129,6 @@ mixin(Collection, {
       : isKeyed(this)
       ? this.toKeyedSeq()
       : this.toSetSeq();
-  },
-
-  toStack() {
-    // Use Late Binding here to solve the circular dependency.
-    return Stack(isKeyed(this) ? this.valueSeq() : this);
-  },
-
-  toList() {
-    // Use Late Binding here to solve the circular dependency.
-    return List(isKeyed(this) ? this.valueSeq() : this);
   },
 
   // ### Common JavaScript methods and properties

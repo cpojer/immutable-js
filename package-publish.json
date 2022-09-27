@@ -1,0 +1,32 @@
+{
+  "name": "@cnakazawa/immutable-map",
+  "version": "1.0.1",
+  "description": "Immutable Map",
+  "license": "MIT",
+  "homepage": "https://immutable-js.com",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/cpojer/immutable-js.git"
+  },
+  "type": "module",
+  "module": "./ImmutableMap.js",
+  "exports": {
+    ".": {
+      "default": "./ImmutableMap.js"
+    }
+  },
+  "types": "./ImmutableMap.d.ts",
+  "sideEffects": false,
+  "keywords": [
+    "immutable",
+    "persistent",
+    "lazy",
+    "data",
+    "datastructure",
+    "functional",
+    "collection",
+    "stateless",
+    "sequence",
+    "iteration"
+  ]
+}

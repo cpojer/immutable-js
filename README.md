@@ -5,11 +5,11 @@ This is a fork of [Immutable.js](https://immutable-js.com) that only includes "I
 ## Installation
 
 ```bash
-pnpm install @cnakazawa/immutable-map
+pnpm install @nkzw/immutable-map
 ```
 
 ## Usage
 
 ```js
-import ImmutableMap from '@cnakazawa/immutable-map';
+import ImmutableMap from '@nkzw/immutable-map';
 ```

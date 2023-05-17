@@ -1,6 +1,6 @@
 {
-  "name": "@cnakazawa/immutable-map",
-  "version": "1.0.1",
+  "name": "@nkzw/immutable-map",
+  "version": "1.0.2",
   "description": "Immutable Map",
   "license": "MIT",
   "homepage": "https://immutable-js.com",

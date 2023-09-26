@@ -1,6 +1,6 @@
 {
   "name": "@nkzw/immutable-map",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Immutable Map",
   "private": true,
   "license": "MIT",
@@ -9,6 +9,7 @@
     "type": "git",
     "url": "git://github.com/cpojer/immutable-js.git"
   },
+  "main": "immutable.js",
   "module": "./immutable.js",
   "sideEffects": false,
   "types": "./immutable.d.ts",

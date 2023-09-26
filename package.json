@@ -1,6 +1,6 @@
 {
   "name": "@nkzw/immutable-map",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "Immutable Map",
   "private": true,
   "license": "MIT",
@@ -9,9 +9,9 @@
     "type": "git",
     "url": "git://github.com/cpojer/immutable-js.git"
   },
-  "module": "./ImmutableMap.js",
+  "module": "./immutable.js",
   "sideEffects": false,
-  "types": "./ImmutableMap.d.ts",
+  "types": "./immutable.d.ts",
   "keywords": [
     "immutable",
     "persistent",
@@ -28,20 +28,20 @@
     "directory": "publish"
   },
   "publishKeys": [
-    "name",
-    "version",
-    "description",
-    "license",
-    "homepage",
     "author",
-    "repository",
     "bugs",
+    "description",
+    "files",
+    "homepage",
+    "keywords",
+    "license",
     "main",
     "module",
+    "name",
+    "repository",
     "sideEffects",
     "types",
-    "files",
-    "keywords"
+    "version"
   ],
   "engines": {
     "npm": ">=7.0.0"

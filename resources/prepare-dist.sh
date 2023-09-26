@@ -11,7 +11,7 @@ rm -rf npm
 mkdir -p npm
 
 # Copy over necessary files
-cp -r dist npm/
+cp -r dist/immutable.es.js npm/immutable.js
 cp README.md npm/
 cp LICENSE npm/
 
@@ -19,4 +19,5 @@ cp LICENSE npm/
 # The built output as requiring any further transformation.
 node -e "var package = require('./package.json'); \
   package = Object.fromEntries(Object.entries(package).filter(([key]) => package.publishKeys.includes(key))); \
+  package.type = \"module\"; \
   require('fs').writeFileSync('./npm/package.json', JSON.stringify(package, null, 2));"

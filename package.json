@@ -1,6 +1,6 @@
 {
   "name": "@nkzw/immutable-map",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Immutable Map",
   "private": true,
   "license": "MIT",

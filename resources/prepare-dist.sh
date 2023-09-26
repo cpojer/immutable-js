@@ -12,6 +12,7 @@ mkdir -p npm
 
 # Copy over necessary files
 cp -r dist/immutable.es.js npm/immutable.js
+cp -r dist/immutable.d.ts npm/
 cp README.md npm/
 cp LICENSE npm/
 

@@ -185,9 +185,11 @@ declare namespace Map {
  * but since Immutable Map keys can be of any type the argument to `get()` is
  * not altered.
  */
-function Map<K, V>(collection?: Iterable<[K, V]>): Map<K, V>;
-function Map<V>(obj: { [key: string]: V }): Map<string, V>;
-function Map<K extends string | symbol, V>(obj: { [P in K]?: V }): Map<K, V>;
+declare function Map<K, V>(collection?: Iterable<[K, V]>): Map<K, V>;
+declare function Map<V>(obj: { [key: string]: V }): Map<string, V>;
+declare function Map<K extends string | symbol, V>(
+  obj: { [P in K]?: V }
+): Map<K, V>;
 
 interface Map<K, V> extends Collection.Keyed<K, V> {
   /**
@@ -902,7 +904,7 @@ interface Map<K, V> extends Collection.Keyed<K, V> {
  * ```
  */
 
-namespace Seq {
+declare namespace Seq {
   /**
    * True if `maybeSeq` is a Seq, it is not backed by a concrete
    * structure such as Map, List, or Set.
@@ -1315,14 +1317,14 @@ namespace Seq {
  * Note: `Seq` is a conversion function and not a class, and does not use the
  * `new` keyword during construction.
  */
-function Seq<S extends Seq<unknown, unknown>>(seq: S): S;
-function Seq<K, V>(collection: Collection.Keyed<K, V>): Seq.Keyed<K, V>;
-function Seq<T>(collection: Collection.Set<T>): Seq.Set<T>;
-function Seq<T>(
+declare function Seq<S extends Seq<unknown, unknown>>(seq: S): S;
+declare function Seq<K, V>(collection: Collection.Keyed<K, V>): Seq.Keyed<K, V>;
+declare function Seq<T>(collection: Collection.Set<T>): Seq.Set<T>;
+declare function Seq<T>(
   collection: Collection.Indexed<T> | Iterable<T> | ArrayLike<T>
 ): Seq.Indexed<T>;
-function Seq<V>(obj: { [key: string]: V }): Seq.Keyed<string, V>;
-function Seq<K = unknown, V = unknown>(): Seq<K, V>;
+declare function Seq<V>(obj: { [key: string]: V }): Seq.Keyed<string, V>;
+declare function Seq<K = unknown, V = unknown>(): Seq<K, V>;
 
 interface Seq<K, V> extends Collection<K, V> {
   /**
@@ -1452,7 +1454,7 @@ interface Seq<K, V> extends Collection<K, V> {
  * Implementations should extend one of the subclasses, `Collection.Keyed`,
  * `Collection.Indexed`, or `Collection.Set`.
  */
-namespace Collection {
+declare namespace Collection {
   /**
    * @deprecated use `const { isKeyed } = require('immutable')`
    */
@@ -2067,12 +2069,16 @@ namespace Collection {
  * Note: `Collection` is a conversion function and not a class, and does not
  * use the `new` keyword during construction.
  */
-function Collection<I extends Collection<unknown, unknown>>(collection: I): I;
-function Collection<T>(
+declare function Collection<I extends Collection<unknown, unknown>>(
+  collection: I
+): I;
+declare function Collection<T>(
   collection: Iterable<T> | ArrayLike<T>
 ): Collection.Indexed<T>;
-function Collection<V>(obj: { [key: string]: V }): Collection.Keyed<string, V>;
-function Collection<K = unknown, V = unknown>(): Collection<K, V>;
+declare function Collection<V>(obj: {
+  [key: string]: V;
+}): Collection.Keyed<string, V>;
+declare function Collection<K = unknown, V = unknown>(): Collection<K, V>;
 
 interface Collection<K, V> extends ValueObject {
   // Value equality
@@ -3004,4 +3010,4 @@ interface ValueObject {
  *     import { List } from "immutable";
  *
  */
-export = Map;
+export default Map;

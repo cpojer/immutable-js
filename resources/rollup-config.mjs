@@ -7,7 +7,7 @@ import json from 'rollup-plugin-json';
 import saveLicense from 'uglify-save-license';
 import stripBanner from 'rollup-plugin-strip-banner';
 
-import copyright from './copyright';
+import copyright from './copyright.mjs';
 
 const SRC_DIR = path.resolve('src');
 const DIST_DIR = path.resolve('dist');

@@ -20,6 +20,3 @@ cp LICENSE npm/
 node -e "var package = require('./package.json'); \
   package = Object.fromEntries(Object.entries(package).filter(([key]) => package.publishKeys.includes(key))); \
   require('fs').writeFileSync('./npm/package.json', JSON.stringify(package, null, 2));"
-
-# Retain marginal support for bower on the npm branch
-cp npm/package.json npm/bower.json

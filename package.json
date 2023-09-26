@@ -1,7 +1,8 @@
 {
   "name": "@nkzw/immutable-map",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Immutable Map",
+  "private": true,
   "license": "MIT",
   "homepage": "https://immutable-js.com",
   "repository": {
